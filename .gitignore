@@ -3,3 +3,6 @@
 *.pdf
 token.json
 auth.ini
+google_drive/__pycache__
+google_drive/__pycache__/google_drive_utils.cpython-310.pyc
+*.pyc
