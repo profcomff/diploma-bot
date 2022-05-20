@@ -11,6 +11,7 @@ config.read('auth.ini')
 GROUP_ID = config['auth_vk']['group_id']
 GROUP_TOKEN = config['auth_vk']['group_token']
 DOWNLOAD_TAG = config['tags']['test_tag']
+DIPLOMA_FOLDER = config['drive_repo']['diploma_folder']
 API_VERSION = '5.131'
 
 vk_session = VkApi(token=GROUP_TOKEN, api_version=API_VERSION)  # Auth with community token
@@ -21,7 +22,7 @@ drive_service = get_service('token.json')
 
 def process_event(event, cache=True):
     if event.type == VkBotEventType.MESSAGE_NEW and event.from_user:
-        if DOWNLOAD_TAG in (event.message['text']).lower().split() and event.message.attachments:
+        if DOWNLOAD_TAG in (event.message['text']).lower() and event.message.attachments:
             title = event.message.attachments[0]['doc']['title']
             url = event.message.attachments[0]['doc']['url']
             content = requests.get(url).content
@@ -31,7 +32,7 @@ def process_event(event, cache=True):
                 with open(file, 'wb') as cachefile:
                     cachefile.write(content)
                 print(f'File: {title} uploaded to cache')
-                upload_file_to_drive(drive_service, file=file, name=title)
+                upload_file_to_drive(drive_service, file=file, name=title, folder_name=DIPLOMA_FOLDER)
             else:
                 with open(title, 'wb') as file:
                     file.write(content)
