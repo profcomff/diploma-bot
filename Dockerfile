@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 42
 
 # Run the file
-CMD ["ls"]
+CMD ["python", "-u", "chat.py"]
 
 ##===== Example docker Ubuntu command:
 # docker run -d --name diploma-bot -v /root/diploma-bot:/diploma-bot IMAGEID
