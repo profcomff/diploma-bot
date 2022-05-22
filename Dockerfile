@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 42
 
 # Run the file
-CMD ["python", "-u", "chat.py"]
+CMD ["pwd"]
 
 ##===== Example docker Ubuntu command:
 # docker run -d --name print-bot -v /root/print-bot:/print-bot imageid
