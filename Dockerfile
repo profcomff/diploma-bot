@@ -1,5 +1,5 @@
 # Marakulin Andrey @annndruha
-# 2021
+# 2022
 
 # Base image
 FROM python:3.10.0
@@ -18,8 +18,8 @@ EXPOSE 42
 CMD ["ls"]
 
 ##===== Example docker Ubuntu command:
-# docker run -d --name print-bot -v /root/print-bot:/print-bot imageid
-##==== Next, add auth.ini file to /root/print-bot
+# docker run -d --name diploma-bot -v /root/diploma-bot:/diploma-bot IMAGEID
+##==== Next, add auth.ini file to /root/diploma-bot
 ##==== and restart container
-# docker stop print-bot
-# docker start print-bot
+# docker stop diploma-bot
+# docker start diploma-bot
