@@ -5,7 +5,7 @@
 FROM python:3.10.0
 
 # Create directoris inside container
-ADD ./ /diploma-bot
+COPY ./ /diploma-bot
 WORKDIR /diploma-bot
 
 # Install libs from requirements
