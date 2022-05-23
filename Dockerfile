@@ -16,8 +16,6 @@ EXPOSE 42
 
 # Run the file
 CMD ["pwd"]
-CMD ["ls"]
-
 ##===== Example docker Ubuntu command:
 # docker run -d --name diploma-bot -v /root/diploma-bot:/diploma-bot IMAGEID
 ##==== Next, add auth.ini file to /root/diploma-bot
