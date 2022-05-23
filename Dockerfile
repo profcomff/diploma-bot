@@ -15,6 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 42
 
 # Run the file
+CMD ["pwd"]
 CMD ["ls"]
 
 ##===== Example docker Ubuntu command:
