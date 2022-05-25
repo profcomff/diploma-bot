@@ -6,7 +6,7 @@
 FROM python:3.10.0
 
 # Копируем всю текущую папку в /print-bot
-ADD ./ /diploma-bot
+ADD . /diploma-bot
 
 # Дальше /print-bot является корневой и все выполняем из нее
 WORKDIR /diploma-bot
