@@ -5,7 +5,7 @@
 FROM python:3.10.0
 
 # Create directoris inside container
-COPY . /diploma-bot
+COPY ./ /diploma-bot
 WORKDIR /diploma-bot
 
 # Install libs from requirements
@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 42
 
 # Run the file
-CMD ["ls", "~" ,"-aR"]
+CMD ["python", "./chat.py"]
 ##===== Example docker Ubuntu command:
 # docker run -d --name diploma-bot -v /root/diploma-bot:/diploma-bot IMAGEID
 ##==== Next, add auth.ini file to /root/diploma-bot
