@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 42
 
 # Run the file
-CMD ["sh"]
+CMD ["sleep infinity"]
 ##===== Example docker Ubuntu command:
 # docker run -d --name diploma-bot -v /root/diploma-bot:/diploma-bot IMAGEID
 ##==== Next, add auth.ini file to /root/diploma-bot
