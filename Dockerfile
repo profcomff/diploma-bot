@@ -5,9 +5,9 @@
 FROM python:3.10.0
 
 # Create directoris inside container
-WORKDIR /diploma-bot
-COPY . .
 
+COPY . ./diploma-bot
+WORKDIR /diploma-bot
 
 # Install libs from requirements
 RUN pip install --no-cache-dir -r requirements.txt
