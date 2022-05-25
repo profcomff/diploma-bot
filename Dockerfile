@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 42
 
 # Run the file
-CMD ["python", "./chat.py"]
+CMD ["python", "chat.py"]
 ##===== Example docker Ubuntu command:
 # docker run -d --name diploma-bot -v /root/diploma-bot:/diploma-bot IMAGEID
 ##==== Next, add auth.ini file to /root/diploma-bot
