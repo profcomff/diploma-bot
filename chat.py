@@ -33,7 +33,7 @@ def process_event(event):
             title = event.message.attachments[0]['doc']['title']
             url = event.message.attachments[0]['doc']['url']
             content = requests.get(url).content
-            fmt = title.split('.')[1]
+            fmt = title.split('.')[-1]
             file = f'cache.{fmt}'
             with open(file, 'wb') as cachefile:
                 cachefile.write(content)
