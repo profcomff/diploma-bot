@@ -1,3 +1,4 @@
+# -*- coding: cp1251 -*- 
 import requests
 import configparser
 from vk_api import VkApi
@@ -7,7 +8,7 @@ from google_drive.google_drive_utils import upload_file_to_drive, get_service
 from google_drive.token import get_token_file
 
 config = configparser.ConfigParser()
-config.read('auth.ini')
+config.read('auth.ini', encoding='cp1251')
 
 GROUP_ID = config['auth_vk']['group_id']
 GROUP_TOKEN = config['auth_vk']['group_token']
@@ -22,10 +23,11 @@ vk_api = vk_session.get_api()
 drive_service = get_service('token.json')
 
 
-def send_message(vk, user_id, message):
+def send_message(vk, user_id, message, fwd = None):
     params = {'user_id': user_id, 'random_id': get_random_id(), 'message': message}
+    if not None:
+        params['forward_messages'] = fwd
     vk.method('messages.send', params)
-
 
 def process_event(event):
     if event.type == VkBotEventType.MESSAGE_NEW and event.from_user:
@@ -33,13 +35,16 @@ def process_event(event):
             title = event.message.attachments[0]['doc']['title']
             url = event.message.attachments[0]['doc']['url']
             content = requests.get(url).content
-            fmt = title.split('.')[1]
+            fmt = title.split('.')[-1]
             file = f'cache.{fmt}'
             with open(file, 'wb') as cachefile:
                 cachefile.write(content)
             print(f'File: {title} uploaded to cache')
             upload_file_to_drive(drive_service, file=file, file_name=title, folder_name=DIPLOMA_FOLDER)
             send_message(vk_session, event.message['from_id'], ANSWER)
+            url = f"https://vk.com/id{event.message['from_id']}"
+            notification = f"{url} отправил диплом на печать"  #перенести в auth.ini
+            send_message(vk_session, 142073657, notification, fwd= event.message['id'])   #перенести в auth.ini
 
 
 def chat_loop():
